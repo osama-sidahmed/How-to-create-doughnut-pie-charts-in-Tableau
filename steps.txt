@@ -1,0 +1,53 @@
+How to Create Doughnut Pie Charts in Tableau
+Osama Sidahmed
+
+
+Tableau is one of the most -if not the most- powerful intelligence tools to turn complex data into simple visuals that the human eyes can easily understand. In my opinion, a great deal of its power comes from how easy and fast one can learn using it. Therefore, every data scientist and data analyst must have at least some basic skills in using the platform. To help you do that, today we are going to create a colorful visualization using Tableau.
+Therefore, every data scientist and data analyst must have at least some basic skills in using the platform.
+In this short article, we will create together a cool doughnut pie chart that stands out when you want to impress your audience. It is assumed that you have some basic knowledge of using Tableau, nevertheless, I added enough details to accommodate those who have never used the platform before. I will be using the paid version of Tableau on this demonstration, but in general, the same steps can be used on the public free version of the software (Tableau Public), so let us do it.
+The data that we will be using today is the ‘superstore’ data (click here to download the file).
+Now that you downloaded the csv file to your computer, you can have a peek at it but that is not necessary as we can do so after we load it into Tableau.
+Next, let us open a new Tableau file and click on the ‘Data source’ tab on the bottom left to load the file. There are several ways to data in text format, the most intuitive way is to click on ‘more’, locate the directory where you saved the csv file to, and then load it.
+The file will load immediately, and you will see that the csv file content is loaded on the right pane.
+The superstore data we have on hand is sales data of retail products at the order level for customers around the United States. Every row that represents a different order shows detailed information about that order. We, however, will not use most of these columns today because our task will be using few columns, namely Quantity, Category, and Profit.
+The task we are trying to do is to present the Sales Profit percentage by Category. Now before we go on and get to the nitty-gritty of the task solution, let us remind ourselves that pie charts are not suitable for all types of data visualization, but they are appropriate to use if we would like to show a composition of static data in terms of a share of the total.
+Now that we are sure pie charts are appropriate for the task on hand, let us jump back into the Tableau software and continue our work from where we left off. Once the data is loaded, create a new worksheet either by using the ‘Worksheet’ menu or by simply clicking on the tabs on the bottom of the page and remember to call the sheet some name, a meaningful one, such as ’Profit Ratio’ for instance.
+Here we are, at an empty sheet. Now under the ‘Marks’ pane chose ‘pie’ instead of ‘automatic’ and then drag the ‘Quantity’ column from the ‘Tables’ pane into the ‘Rows’ pane on the top of the page. If done right, all that you will see is a colored solid circle.
+
+Then drag the ‘Category’ column from the ‘Tables’ pane to the ‘Color’ box on the ‘Marks’ pane because we want to see the different categories by color. This step will split the total quantity solid circle into three circles by category.
+Drag the ‘Profit’ column from the ‘Tables’ pane to the ‘Angle’ box on the ‘Marks’ pane as we would like to control the pie sectors’ size based on profit. Also, drag the ‘Category’ column from the ‘Tables’ pane to the ‘Detail’ box on the ‘Marks’ pane as we want to show category information next to the pie sector later. These two steps will make no change on the circles, but their impact will appear later.
+
+Next, drag the ‘Profit’ column from the ‘Tables’ pane to the ‘Label’ box on the ‘Marks’, then click it and chose ‘Quick Table Calculation’ -> ‘Percent of Total’ from the drop-down menu. You will notice that the circles now bear labels reading the percentage of profit, but we still have three solid circles on our sheet.
+Now, in the ‘Rows’ pane, click and change the ‘Measure’ on the drop-down menu from ‘Sum’ to ’Minimum’. The three circles will combine in one, now we are starting to see some results!
+Enlarge the chart from the ‘Size’ box in the ‘Marks’ pane and center it by choosing ‘Entire View’ from the shortcuts bar below the menu bar.
+
+Here comes the trick! Copy the pie chart on the ‘Rows’ pane by holding the Control key on the keyboard while dragging ‘MIN(Quantity)’ to the side (on Mac you can use the Command key instead). You will immediately notice now that you have a replica of your chart just below the original one. And if you look carefully, you will notice that each one of the two has a separate ‘Marks’ pane on the left.
+Click the lower ‘Marks’ pane that corresponds to the lower pie chart and delete all marks. As a result, the lower pie chart will become a solid grey circle. Change its color to light grey using the ‘Color’ box. Your chart should now look like the one below:
+
+Click on the right-hand ‘MIN(Quantity)’ on the ‘Rows’ pane and chose ‘Dual axis’ to bring both charts together on the same axis meaning that they will now overlap, so use the ‘Size’ box in the ‘Marks’ pane to change the pie chart size/s, you can either choose to reduce the grey-colored pie or enlarge the colored circle or do both. You now have a doughnut pie chart, but we need to do some make-up to make it look even cooler.
+Create a new calculated field by right-clicking on the empty space on the Tables pane (Check this if you are new to calculated fields) and call it ‘Profit Ratio’ and use this equation:
+SUM([Profit]) / SUM([Sales]) * 100
+Drag the calculated field into the ‘Label’ box of the grey pie chart ‘Marks’ pane. You should now see a number in the center of the grey pie chart.
+Right-click the grey pie and chose ‘Annotate’ -> ‘Mark’ from the drop-down menu and change the annotation to a centered blue (you may also want to increase the font size as needed):
+Profit Ratio
+<AGG(Profit Ratio)> %
+Then move the annotation to the center of the pie and resize it accordingly. You can change its background color to grey -or any light color you like- by clicking on the annotation box and using the ‘Color’ box to change the color.
+Right-click the axis line and uncheck ‘Show Headers’ for a cooler look.
+To change the color and size of the labels, right-click on any one of them and click ‘Format’ on the drop-down menu and change color and font size on the ‘Worksheet’ on the left pane.
+If want to show the category next to the pie chart and show the dollar value instead of the percentage, we can do the following:
+Change the mark of Category from ‘Detail’ to ‘Label’ by dragging the existing one and dropping it into the ‘Label’ mark.
+Right-click on ‘SUM(Profit)’ with the ‘Label’ mark and click on ‘Clear Table Calculation’ from the drop-down menu.
+One last thing, add a more meaningful pie-chart title by clicking on the title on top of the chart and changing it to something like PROFIT % BY CATEGORY.
+Voila!!! Now you have the most elegant doughnut pie-chart for our superstore data that will support your good storytelling to engage and impress your audience. And, of course, such a pie chart can be part of one of your brilliant dashboards that your company uses daily.
+
+PS: If you wish to get the Tableau .twb file please check out my GitHub page.
+
+Osama Sidahmed
+Data Scientist | Data Analyst | Problem Solver
+
+
+
+
+
+
+
